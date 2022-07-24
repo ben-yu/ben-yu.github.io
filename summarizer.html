@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <title>Paper Title Generator</title>
+    <title>Multiple Paper Summarizer</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -24,27 +24,27 @@
         <h1 class="mt-4">Multiple Paper Summarizer</h1>
 
         <form class="my-5 shadow-sm p-3 bg-white border rounded">
-            <div class="form-group">
+            <div class="form-group col">
                 <label for="abstract">Paste the abstract of your paper here:</label>
                 <textarea id="abstract" name="abstract" class="form-control text-muted" rows="8"></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <label for="abstract-2">Paste the abstract of your paper here:</label>
                 <textarea id="abstract-2" name="abstract-2" class="form-control text-muted" rows="8"></textarea>
             </div>
-           <div class="form-group">
+           <div class="form-group col">
                 <label for="abstract-3">Paste the abstract of your paper here:</label>
                 <textarea id="abstract-3" name="abstract-3" class="form-control text-muted" rows="8"></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <label for="abstract-4">Paste the abstract of your paper here:</label>
                 <textarea id="abstract-4" name="abstract-4" class="form-control text-muted" rows="8"></textarea>
             </div>
-           <div class="form-group">
+           <div class="form-group col">
                 <label for="abstract">Paste the abstract of your paper here:</label>
                 <textarea id="abstract-5" name="abstract-5" class="form-control text-muted" rows="8"></textarea>
             </div>
-            <div class="text-center">
+            <div class="text-center col-12">
                 <button type="button" class="btn btn-primary">
                     <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true" style="display: none;"></span>
                     Generate Titles
@@ -88,7 +88,7 @@
       
         async function query(data) {
           const response = await fetch(
-            "https://api-inference.huggingface.co/models/google/pegasus-pubmed",
+            "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
             {
               headers: { Authorization: "Bearer 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" },
               method: "POST",
