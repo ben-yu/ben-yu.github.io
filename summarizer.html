@@ -24,25 +24,31 @@
         <h1 class="mt-4">Multiple Paper Summarizer</h1>
 
         <form class="my-5 shadow-sm p-3 bg-white border rounded">
-            <div class="form-group col">
-                <label for="abstract">Paste the abstract of your paper here:</label>
-                <textarea id="abstract" name="abstract" class="form-control text-muted" rows="8"></textarea>
-            </div>
-            <div class="form-group col">
-                <label for="abstract-2">Paste the abstract of your paper here:</label>
-                <textarea id="abstract-2" name="abstract-2" class="form-control text-muted" rows="8"></textarea>
-            </div>
-           <div class="form-group col">
-                <label for="abstract-3">Paste the abstract of your paper here:</label>
-                <textarea id="abstract-3" name="abstract-3" class="form-control text-muted" rows="8"></textarea>
-            </div>
-            <div class="form-group col">
-                <label for="abstract-4">Paste the abstract of your paper here:</label>
-                <textarea id="abstract-4" name="abstract-4" class="form-control text-muted" rows="8"></textarea>
-            </div>
-           <div class="form-group col">
-                <label for="abstract">Paste the abstract of your paper here:</label>
-                <textarea id="abstract-5" name="abstract-5" class="form-control text-muted" rows="8"></textarea>
+            <div class="row">
+                <div class="form-group col-4">
+                    <label for="abstract">Paste the abstract of your paper here:</label>
+                    <textarea id="abstract" name="abstract" class="form-control text-muted" rows="8"></textarea>
+                </div>
+                <div class="form-group col-4">
+                    <label for="abstract-2">Paste the abstract of your paper here:</label>
+                    <textarea id="abstract-2" name="abstract-2" class="form-control text-muted" rows="8"></textarea>
+                </div>
+               <div class="form-group col-4">
+                    <label for="abstract-3">Paste the abstract of your paper here:</label>
+                    <textarea id="abstract-3" name="abstract-3" class="form-control text-muted" rows="8"></textarea>
+                </div>
+                <div class="form-group col-4">
+                    <label for="abstract-4">Paste the abstract of your paper here:</label>
+                    <textarea id="abstract-4" name="abstract-4" class="form-control text-muted" rows="8"></textarea>
+                </div>
+                <div class="form-group col-4">
+                    <label for="abstract">Paste the abstract of your paper here:</label>
+                    <textarea id="abstract-5" name="abstract-5" class="form-control text-muted" rows="8"></textarea>
+                </div>
+                <div class="form-group col-4">
+                    <label for="abstract">Paste the abstract of your paper here:</label>
+                    <textarea id="abstract-6" name="abstract-6" class="form-control text-muted" rows="8"></textarea>
+                </div>
             </div>
             <div class="text-center col-12">
                 <button type="button" class="btn btn-primary">
@@ -112,6 +118,7 @@
 
 
         function handleResponse(response) {
+            console.log(response);
             var $loadingSpinner = $('#loading-spinner');
             if ('error' in response)
             {
@@ -125,19 +132,14 @@
             }
             else if ($loadingSpinner.is(':visible'))
                 $loadingSpinner.fadeOut(function() {
-                    showResults(response.titles);
+                    showResults(response[0].summary_text);
                 });
             else
-                showResults(response.titles);
+                showResults(response[0].summary_text);
         }
 
         function handleError(errMsg) {
-            var $toast = $('#errorToast'), text = 'An error occurred.', timeout = 5000;
-            
-            if (errMsg.search('API usage limit reached') != -1) {
-                text = 'Our free service reached the monthly usage limit of the Huggingface hosted inference API. Please try again next month.';
-                timeout = 10000;
-            }
+            var $toast = $('#errorToast'), text = errMsg, timeout = 5000;
             
             $toast.find('.toast-body').text(text);
             
