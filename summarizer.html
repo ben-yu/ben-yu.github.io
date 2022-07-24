@@ -67,10 +67,9 @@
             <ul id="generated-titles" class="list-group"></ul>
             <small class="d-block text-center text-muted mt-4">
                 Click on a title to copy it to the clipboard.<br/>
-                If you are going to share your results on Twitter, consider tagging <a href="https://twitter.com/hashtag/titlegen">#titlegen</a>.
             </small>
             <small class="d-block text-center text-muted mt-3">
-                Built by <a href="https://twitter.com/Callidior">@Callidior</a>.
+                Built by <a href="https://twitter.com/_ben_yu">@Callidior</a>.
             </small>
         </div>
 
@@ -155,13 +154,12 @@
             }, timeout + 1000);
         }
 
-        function showResults(titles) {
+        function showResults(summary) {
             var $list = $('#generated-titles'), i;
             $('.spinner-border').hide();
             $('button').prop('disabled', false);
             $list.empty();
-            for (i = 0; i < titles.length; ++i)
-                $('<li>').addClass('list-group-item list-group-item-action').text(titles[i]).on('click', copyTitle).appendTo($list);
+            $('<li>').addClass('list-group-item list-group-item-action').text(summary).on('click', copyTitle).appendTo($list);
             $('#results-container').slideDown();
         }
 
