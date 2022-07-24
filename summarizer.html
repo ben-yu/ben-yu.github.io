@@ -106,11 +106,11 @@
       
       
         function submit() {
-            var abstract = $('#abstract').val().trim(), temperature = $('#temperature').val();
-            if (abstract != '') {
+            var abstracts = [$('#abstract').val().trim(), $('#abstract-2').val().trim(), $('#abstract-3').val().trim(), $('#abstract-4').val().trim(), $('#abstract-5').val().trim(), $('#abstract-6').val().trim()]
+            if (abstracts.length != 0) {
                 $('.spinner-border').show();
                 $(this).prop('disabled', true);
-                query({"inputs": abstract}).then(handleResponse).catch(handleError);
+                query({"inputs": abstracts.join(' ')}).then(handleResponse).catch(handleError);
             }
         }
       
