@@ -142,11 +142,11 @@
             } else if ($loadingSpinner.is(':visible')) {
                 $loadingSpinner.fadeOut(function() {
                     var result = "";
-                    if response.length > 0 {
-                        if "summary_text" in response[0] {
+                    if (response.length > 0) {
+                        if ("generated_text" in response[0]) {
                             result = response[0].generated_text
                         }
-                        if "summary_text" in response[0] {
+                        if ("summary_text" in response[0]) {
                             result = response[0].summary_text
                         }
                     }
@@ -154,11 +154,11 @@
                 });
             } else {
                 var result = "";
-                if response.length > 0 {
-                    if "summary_text" in response[0] {
+                if (response.length > 0) {
+                    if ("generated_text" in response[0]) {
                         result = response[0].generated_text
                     }
-                    if "summary_text" in response[0] {
+                    if ("summary_text" in response[0]) {
                         result = response[0].summary_text
                     }
                 }
