@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="text-center col-12">
-                <select class="form-select form-select-sm" aria-label=".form-select-sm">
+                <select id="model-selector" class="form-select form-select-sm" aria-label=".form-select-sm">
                   <option value="LongT5">LongT5</option>
                   <option value="BigBird">BigBird</option>
                   <option value="BART">BART</option>
@@ -101,8 +101,8 @@
           const modelURLs = {
               "LongT5" : "https://api-inference.huggingface.co/models/Stancld/longt5-tglobal-large-16384-pubmed-3k_steps",
               "BigBird" : "https://api-inference.huggingface.co/models/google/bigbird-pegasus-large-pubmed",
-              "BART" : "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
-          }            
+              "BART" : "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
+          };
           const modelType = $( "#model-selector option:selected" ).text();
           const response = await fetch(
             modelURLs[modelType],
