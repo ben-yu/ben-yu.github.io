@@ -131,8 +131,7 @@
         function handleResponse(response) {
             console.log(response);
             var $loadingSpinner = $('#loading-spinner');
-            if ('error' in response)
-            {
+            if ('error' in response) {
                 if (response.error.search(' is currently loading') == -1)
                     handleError(response.error);
                 else
@@ -140,13 +139,31 @@
                     $loadingSpinner.fadeIn();
                     setTimeout(submit, 2000);
                 }
-            }
-            else if ($loadingSpinner.is(':visible'))
+            } else if ($loadingSpinner.is(':visible')) {
                 $loadingSpinner.fadeOut(function() {
-                    showResults(response[0].summary_text);
+                    var result = "";
+                    if len(response) > 0 {
+                        if "summary_text" in response[0] {
+                            result = response[0].generated_text
+                        }
+                        if "summary_text" in response[0] {
+                            result = response[0].summary_text
+                        }
+                    }
+                    showResults(result);
                 });
-            else
-                showResults(response[0].summary_text);
+            } else {
+                var result = "";
+                if len(response) > 0 {
+                    if "summary_text" in response[0] {
+                        result = response[0].generated_text
+                    }
+                    if "summary_text" in response[0] {
+                        result = response[0].summary_text
+                    }
+                }
+                showResults(result);
+            }
         }
 
         function handleError(errMsg) {
