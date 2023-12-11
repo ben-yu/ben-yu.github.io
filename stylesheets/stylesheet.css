@@ -48,6 +48,11 @@ table {
 Theme Styles
 *******************************************************************************/
 
+/* Hide header */
+header {
+  display: none;
+}
+
 body {
   box-sizing: border-box;
   color:#373737;
